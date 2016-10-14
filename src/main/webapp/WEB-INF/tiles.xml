@@ -1,0 +1,21 @@
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="definition" template="/resources/view/template/template.jsp">
+		<put-attribute name="header" value="/resources/view/template/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/resources/view/template/footer.jsp" />
+		<put-attribute name="navbar" value="/resources/view/template/navbar.jsp" />
+		<put-attribute name="nav" value="/resources/view/template/section.jsp" />
+		<put-attribute name="topbar" value="/resources/view/template/topbar.jsp" />
+		<put-attribute name="mainmenu" value="/resources/view/template/mainmenu.jsp" />
+	</definition>
+	
+	
+	<definition name="homePage" extends="definition">
+		<put-attribute name="body" value="/resources/view/user/home.jsp" />
+	</definition>	
+</tiles-definitions>
