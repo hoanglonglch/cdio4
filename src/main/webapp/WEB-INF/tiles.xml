@@ -17,5 +17,8 @@
 	
 	<definition name="homePage" extends="definition">
 		<put-attribute name="body" value="/resources/view/user/home.jsp" />
-	</definition>	
+	</definition>
+	<definition name="cartPage" extends="definition">
+		<put-attribute name="body" value="/resources/view/user/cart.jsp" />
+	</definition>
 </tiles-definitions>
