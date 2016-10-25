@@ -7,7 +7,7 @@ import com.guru.entities.UserEntity;
 import com.guru.repository.UserEntityRepository;
 
 @Service
-public class UserEntityIManagermpl implements UserEntityManager{
+public class UserEntityManagerImpl implements UserEntityManager{
 	
 	@Autowired
 	UserEntityRepository userEntityRepository;

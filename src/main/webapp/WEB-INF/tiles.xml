@@ -21,4 +21,16 @@
 	<definition name="cartPage" extends="definition">
 		<put-attribute name="body" value="/resources/view/user/cart.jsp" />
 	</definition>
+	<definition name="checkoutPage" extends="definition">
+		<put-attribute name="body" value="/resources/view/user/checkout.jsp" />
+	</definition>
+	<definition name="productPage" extends="definition">
+		<put-attribute name="body" value="/resources/view/user/products.jsp" />
+	</definition>
+	<definition name="productdetailPage" extends="definition">
+		<put-attribute name="body" value="/resources/view/user/product_detail.jsp" />
+	</definition>
+	<definition name="register" extends="definition">
+		<put-attribute name="body" value="/resources/view/user/register.jsp" />
+	</definition>
 </tiles-definitions>
