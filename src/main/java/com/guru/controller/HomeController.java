@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.guru.entities.CategoryEntity;
 import com.guru.entities.ParentEntity;
-import com.guru.repository.CategoryEntityRepository;
-import com.guru.repository.ParentEntityRepository;
+import com.guru.service.CategoryEntityManager;
+import com.guru.service.ParentEntityManager;
 
 /**
  * Handles requests for the application home page.
@@ -27,10 +27,10 @@ import com.guru.repository.ParentEntityRepository;
 public class HomeController {
 	
 	@Autowired
-	ParentEntityRepository parentEntityRepository;
+	ParentEntityManager parentEntityManager;
 	
 	@Autowired
-	CategoryEntityRepository categoryEntityRepository;
+	CategoryEntityManager categoryEntityManager;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -49,12 +49,12 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		List<ParentEntity> parent = new ArrayList<ParentEntity>();
-		parent = parentEntityRepository.findAll();
+		parent = parentEntityManager.getAllParent();
 		for (ParentEntity parentEntity : parent) {
 			System.out.println(parentEntity.getId() + parentEntity.getParent() + parentEntity.getCategories());
 		}
 		List<CategoryEntity> category = new ArrayList<CategoryEntity>();
-		category = categoryEntityRepository.findAll();
+		category = categoryEntityManager.getAllCategory();
 		for (CategoryEntity categoryEntity : category) {
 			System.out.println(categoryEntity.getId() + categoryEntity.getCategory() + categoryEntity.getParent());
 		}
