@@ -30,6 +30,6 @@ public class CheckoutController {
 
 		model.addAttribute("serverTime", formattedDate);
 
-		return "checkoutPage";
+		return "checkout";
 	}
 }

@@ -30,6 +30,6 @@ public class CartController {
 
 		model.addAttribute("serverTime", formattedDate);
 
-		return "cartPage";
+		return "cart";
 	}
 }

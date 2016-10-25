@@ -30,6 +30,6 @@ public class ProductDetailController {
 
 		model.addAttribute("serverTime", formattedDate);
 
-		return "productdetailPage";
+		return "productdetail";
 	}
 }
