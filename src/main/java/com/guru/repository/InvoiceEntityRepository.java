@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.guru.entities.InvoiceEntity;
 
 @Repository
-public interface InvoiceEntityRepository extends JpaRepository<InvoiceEntity,Integer>{
+public interface InvoiceEntityRepository extends JpaRepository<InvoiceEntity, String>{
 
 }

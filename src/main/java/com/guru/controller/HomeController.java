@@ -63,6 +63,6 @@ public class HomeController {
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
 	public String contact() {
 
-		return "contact";
+		return "contactPage";
 	}
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.guru.entities.UserRoleEntity;
 
 @Repository
-public interface UserRoleEntityRepository extends JpaRepository<UserRoleEntity,Integer>{
+public interface UserRoleEntityRepository extends JpaRepository<UserRoleEntity, String>{
 
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.guru.entities.ImageEntity;
 
 @Repository
-public interface ImageEntityRepository extends JpaRepository<ImageEntity,Integer>{
+public interface ImageEntityRepository extends JpaRepository<ImageEntity, String>{
 
 }

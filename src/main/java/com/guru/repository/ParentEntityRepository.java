@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.guru.entities.ParentEntity;
 
 @Repository
-public interface ParentEntityRepository extends JpaRepository<ParentEntity,Integer>{
+public interface ParentEntityRepository extends JpaRepository<ParentEntity, String>{
 
 }

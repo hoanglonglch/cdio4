@@ -15,25 +15,25 @@
 	</definition>
 	
 	
-	<definition name="home=" extends="definition">
+	<definition name="homePage" extends="definition">
 		<put-attribute name="body" value="/resources/view/user/home.jsp" />
 	</definition>
-	<definition name="cart=" extends="definition">
+	<definition name="cartPage" extends="definition">
 		<put-attribute name="body" value="/resources/view/user/cart.jsp" />
 	</definition>
-	<definition name="checkout=" extends="definition">
+	<definition name="checkoutPage" extends="definition">
 		<put-attribute name="body" value="/resources/view/user/checkout.jsp" />
 	</definition>
-	<definition name="product=" extends="definition">
+	<definition name="productPage" extends="definition">
 		<put-attribute name="body" value="/resources/view/user/products.jsp" />
 	</definition>
-	<definition name="productdetail=" extends="definition">
+	<definition name="product_detailPage" extends="definition">
 		<put-attribute name="body" value="/resources/view/user/product_detail.jsp" />
 	</definition>
-	<definition name="register" extends="definition">
-		<put-attribute name="body" value="/resources/view/user/register.jsp" />
+	<definition name="loginPage" extends="definition">
+		<put-attribute name="body" value="/resources/view/user/login.jsp" />
 	</definition>
-	<definition name="contact" extends="definition">
+	<definition name="contactPage" extends="definition">
 		<put-attribute name="body" value="/resources/view/user/contact.jsp" />
 	</definition>
 </tiles-definitions>

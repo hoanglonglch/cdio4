@@ -1,5 +1,5 @@
 <section class="header_text sub">
-	<img class="pageBanner" src="themes/images/pageBanner.png"
+	<img class="pageBanner" src="resources/themes/images/pageBanner.png"
 		alt="New products">
 	<h4>
 		<span>Check Out</span>
