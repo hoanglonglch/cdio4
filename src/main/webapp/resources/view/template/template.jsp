@@ -8,8 +8,7 @@
 <meta name="description" content="">
 <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
 <!-- bootstrap -->
-<link href="resources/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="resources/bootstrap/css/bootstrap-responsive.min.css"
 	rel="stylesheet">
 
@@ -17,11 +16,13 @@
 
 <!-- global styles -->
 <link href="resources/themes/css/flexslider.css" rel="stylesheet" />
+<link href="resources/themes/css/jquery.fancybox.css" rel="stylesheet" />
 <link href="resources/themes/css/main.css" rel="stylesheet" />
 
 <!-- scripts -->
 <script src="resources/themes/js/jquery-1.7.2.min.js"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+<script src="resources/bootstrap/js/jquery.fancybox.js"></script>
 <script src="resources/themes/js/superfish.js"></script>
 <script src="resources/themes/js/jquery.scrolltotop.js"></script>
 
@@ -47,6 +48,25 @@
 					directionNav : true,
 					controlsContainer : ".flex-container" // the container that holds the flexslider
 				});
+			});
+		});
+	</script>
+	<script>
+		$(function() {
+			$('#myTab a:first').tab('show');
+			$('#myTab a').click(function(e) {
+				e.preventDefault();
+				$(this).tab('show');
+			})
+		})
+		$(document).ready(function() {
+			$('.thumbnail').fancybox({
+				openEffect : 'none',
+				closeEffect : 'none'
+			});
+
+			$('#myCarousel-2').carousel({
+				interval : 2500
 			});
 		});
 	</script>

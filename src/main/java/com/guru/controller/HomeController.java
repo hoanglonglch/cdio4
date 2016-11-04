@@ -1,63 +1,38 @@
 package com.guru.controller;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.guru.entities.CategoryEntity;
-import com.guru.entities.ParentEntity;
-import com.guru.service.CategoryEntityManager;
 import com.guru.service.ParentEntityManager;
 
 /**
  * Handles requests for the application home page.
  */
+
+@Transactional
 @Controller
 @RequestMapping(value = "/")
 public class HomeController {
 	
 	@Autowired
 	ParentEntityManager parentEntityManager;
-	
-	@Autowired
-	CategoryEntityManager categoryEntityManager;
-	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	@ModelAttribute("parent")
+	public void parent(){
+		parentEntityManager.getAllParent();
+	}
+	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		List<ParentEntity> parent = new ArrayList<ParentEntity>();
-		parent = parentEntityManager.getAllParent();
-		for (ParentEntity parentEntity : parent) {
-			System.out.println(parentEntity.getId() + parentEntity.getParent() + parentEntity.getCategories());
-		}
-		List<CategoryEntity> category = new ArrayList<CategoryEntity>();
-		category = categoryEntityManager.getAllCategory();
-		for (CategoryEntity categoryEntity : category) {
-			System.out.println(categoryEntity.getId() + categoryEntity.getCategory() + categoryEntity.getParent());
-		}
+	public String home(Locale locale, ModelMap model) {
 		return "homePage";
 	}
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)

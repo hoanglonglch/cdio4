@@ -22,7 +22,7 @@ public class ParentEntity implements Serializable {
 	private String parent;
 
 	//bi-directional many-to-one association to Category
-	@OneToMany(mappedBy="parent")
+	@OneToMany(mappedBy="parent",fetch=FetchType.EAGER)
 	private List<CategoryEntity> categories;
 
 	public ParentEntity() {
