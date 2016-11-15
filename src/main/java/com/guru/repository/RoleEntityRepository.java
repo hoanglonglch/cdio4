@@ -7,5 +7,5 @@ import com.guru.entities.RoleEntity;
 
 @Repository
 public interface RoleEntityRepository extends JpaRepository<RoleEntity, String>{
-
+	RoleEntity findByName(String roleName);
 }

@@ -1,6 +1,8 @@
 package com.guru.entities;
 
 import java.io.Serializable;
+import java.util.UUID;
+
 import javax.persistence.*;
 
 
@@ -15,20 +17,23 @@ public class UserRoleEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private String id;
+	private String id = UUID.randomUUID().toString();
 
 	//bi-directional many-to-one association to Role
 	@ManyToOne
-	@JoinColumn(name="role")
-	private RoleEntity roleBean;
+	private RoleEntity role;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
-	@JoinColumn(name="username")
 	private UserEntity user;
 
 	public UserRoleEntity() {
+	}
+	
+	public UserRoleEntity(RoleEntity role, UserEntity user) {
+		super();
+		this.role = role;
+		this.user = user;
 	}
 
 	public String getId() {
@@ -40,11 +45,11 @@ public class UserRoleEntity implements Serializable {
 	}
 
 	public RoleEntity getRoleBean() {
-		return this.roleBean;
+		return this.role;
 	}
 
-	public void setRoleBean(RoleEntity roleBean) {
-		this.roleBean = roleBean;
+	public void setRoleBean(RoleEntity role) {
+		this.role = role;
 	}
 
 	public UserEntity getUser() {

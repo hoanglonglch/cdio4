@@ -1,6 +1,8 @@
 package com.guru.entities;
 
 import java.io.Serializable;
+import java.util.UUID;
+
 import javax.persistence.*;
 
 
@@ -15,12 +17,11 @@ public class DetailEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private String id;
+	private String id= UUID.randomUUID().toString();
+	
+	private double amount;
 
-	private String amount;
-
-	private String quanlity;
+	private int quanlity;
 
 	//bi-directional many-to-one association to Invoice
 	@ManyToOne
@@ -32,6 +33,14 @@ public class DetailEntity implements Serializable {
 
 	public DetailEntity() {
 	}
+	
+	public DetailEntity(double amount, int quanlity, InvoiceEntity invoice, ProductEntity product) {
+		super();
+		this.amount = amount;
+		this.quanlity = quanlity;
+		this.invoice = invoice;
+		this.product = product;
+	}
 
 	public String getId() {
 		return this.id;
@@ -41,19 +50,19 @@ public class DetailEntity implements Serializable {
 		this.id = id;
 	}
 
-	public String getAmount() {
+	public double getAmount() {
 		return this.amount;
 	}
 
-	public void setAmount(String amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 
-	public String getQuanlity() {
+	public int getQuanlity() {
 		return this.quanlity;
 	}
 
-	public void setQuanlity(String quanlity) {
+	public void setQuanlity(int quanlity) {
 		this.quanlity = quanlity;
 	}
 

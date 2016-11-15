@@ -5,8 +5,9 @@ import java.util.List;
 import com.guru.entities.CategoryEntity;
 
 public interface CategoryEntityManager{
-	
-	public List<CategoryEntity> getAllCategory();
-	
-	public List<CategoryEntity> findCategoryByParent(String id);
+	List<CategoryEntity> getAllCategory();
+	List<CategoryEntity> findCategoryByParent(String id);
+	CategoryEntity findCategoryById(String id);
+	void deleteCategory(CategoryEntity categoryEntity);
+	void saveCategory(CategoryEntity categoryEntity);
 }

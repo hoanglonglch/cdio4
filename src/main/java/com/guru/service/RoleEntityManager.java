@@ -1,5 +1,12 @@
 package com.guru.service;
 
-public interface RoleEntityManager {
+import java.util.List;
 
+import com.guru.entities.RoleEntity;
+
+public interface RoleEntityManager {
+	List<RoleEntity> getAll();
+	RoleEntity getByName(String roleName);
+	void saveRoleEntity(RoleEntity roleEntity);
+	void deleteRoleEntity(RoleEntity roleEntity);
 }

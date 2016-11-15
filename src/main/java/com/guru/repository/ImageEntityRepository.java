@@ -7,5 +7,5 @@ import com.guru.entities.ImageEntity;
 
 @Repository
 public interface ImageEntityRepository extends JpaRepository<ImageEntity, String>{
-
+	ImageEntity findById(String id);
 }

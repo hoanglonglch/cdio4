@@ -4,13 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.guru.entities.CategoryEntity;
 import com.guru.repository.CategoryEntityRepository;
 
 @Service
-@Transactional
 public class CategoryEntityManagerImpl implements CategoryEntityManager {
 	@Autowired
 	private CategoryEntityRepository categoryEntityRepository;
@@ -22,7 +20,24 @@ public class CategoryEntityManagerImpl implements CategoryEntityManager {
 
 	public List<CategoryEntity> findCategoryByParent(String id) {
 		// TODO Auto-generated method stub
-		return categoryEntityRepository.findCategoryByParentId(id);
+		return categoryEntityRepository.findByParentId(id);
 	}
-	
+
+	@Override
+	public CategoryEntity findCategoryById(String id) {
+		// TODO Auto-generated method stub
+		return categoryEntityRepository.findById(id);
+	}
+
+	@Override
+	public void deleteCategory(CategoryEntity categoryEntity) {
+		// TODO Auto-generated method stub
+		categoryEntityRepository.delete(categoryEntity);
+	}
+
+	@Override
+	public void saveCategory(CategoryEntity categoryEntity) {
+		// TODO Auto-generated method stub
+		categoryEntityRepository.save(categoryEntity);
+	}
 }

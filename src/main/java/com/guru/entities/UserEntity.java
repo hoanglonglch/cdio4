@@ -2,8 +2,17 @@ package com.guru.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
+import com.guru.validator.Phone;
+
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 
 /**
@@ -17,27 +26,71 @@ public class UserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	private String id = UUID.randomUUID().toString();
+	
+	@Column(name = "username")
+	@Size(min = 8, max = 20)
 	private String username;
-
+	
+	@NotBlank
+	@Column(name = "address")
 	private String address;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created")
 	private Date created;
-
+	
+	@NotBlank
+	@Email
+	@Column(name = "email")
 	private String email;
-
-	private String image;
-
+	
+	
+	@Pattern(regexp="^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")
+	@Column(name = "password")
 	private String password;
-
+	
+	@Phone
+	@Column(name = "phone")
 	private String phone;
+	
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(
+			name = "user_role",
+			joinColumns={
+					@JoinColumn(name = "user_id")
+			}
+			,inverseJoinColumns={
+					@JoinColumn(name = "role_id")
+			}
+			)
+	private List<RoleEntity> roles;
+	
+	public List<RoleEntity> getRoles() {
+		return roles;
+	}
 
-	//bi-directional many-to-one association to UserRole
-	@OneToMany(mappedBy="user")
-	private List<UserRoleEntity> userRoles;
+	public void setRoles(List<RoleEntity> roles) {
+		this.roles = roles;
+	}
 
 	public UserEntity() {
+	}
+	
+	public UserEntity(String username) {
+		super();
+		this.username = username;
+	}
+
+	public UserEntity(String username, String address, Date created, String email, String password,
+			String phone) {
+		super();
+		this.username = username;
+		this.address = address;
+		this.created = created;
+		this.email = email;
+		this.password = password;
+		this.phone = phone;
 	}
 
 	public String getUsername() {
@@ -72,14 +125,6 @@ public class UserEntity implements Serializable {
 		this.email = email;
 	}
 
-	public String getImage() {
-		return this.image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
 	public String getPassword() {
 		return this.password;
 	}
@@ -96,26 +141,12 @@ public class UserEntity implements Serializable {
 		this.phone = phone;
 	}
 
-	public List<UserRoleEntity> getUserRoles() {
-		return this.userRoles;
+	public String getId() {
+		return id;
 	}
 
-	public void setUserRoles(List<UserRoleEntity> userRoles) {
-		this.userRoles = userRoles;
+	public void setId(String id) {
+		this.id = id;
 	}
-
-	public UserRoleEntity addUserRole(UserRoleEntity userRole) {
-		getUserRoles().add(userRole);
-		userRole.setUser(this);
-
-		return userRole;
-	}
-
-	public UserRoleEntity removeUserRole(UserRoleEntity userRole) {
-		getUserRoles().remove(userRole);
-		userRole.setUser(null);
-
-		return userRole;
-	}
-
+	
 }

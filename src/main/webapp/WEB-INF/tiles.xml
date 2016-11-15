@@ -3,38 +3,33 @@
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-
-	<definition name="definition" template="/resources/view/template/template.jsp">
+	<definition name="definition" template="/resource/view/template/template.jsp">
 		<put-attribute name="header" value="" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="/resources/view/template/footer.jsp" />
-		<put-attribute name="navbar" value="/resources/view/template/navbar.jsp" />
-		<put-attribute name="nav" value="/resources/view/template/section.jsp" />
-		<put-attribute name="topbar" value="/resources/view/template/topbar.jsp" />
-		<put-attribute name="mainmenu" value="/resources/view/template/mainmenu.jsp" />
+		<put-attribute name="footer" value="/resource/view/template/footer.jsp" />
+		<put-attribute name="topbar" value="/resource/view/template/topbar.jsp" />
+		<put-attribute name="mainmenu" value="/resource/view/template/mainmenu.jsp" />
 	</definition>
-	
-	
 	<definition name="homePage" extends="definition">
-		<put-attribute name="header" value="/resources/view/template/header.jsp" />
-		<put-attribute name="body" value="/resources/view/user/home.jsp" />
+		<put-attribute name="header" value="/resource/view/template/header.jsp" />
+		<put-attribute name="body" value="/resource/view/user/home.jsp" />
 	</definition>
 	<definition name="cartPage" extends="definition">
-		<put-attribute name="body" value="/resources/view/user/cart.jsp" />
+		<put-attribute name="body" value="/resource/view/user/cart.jsp" />
 	</definition>
 	<definition name="checkoutPage" extends="definition">
-		<put-attribute name="body" value="/resources/view/user/checkout.jsp" />
+		<put-attribute name="body" value="/resource/view/user/checkout.jsp" />
 	</definition>
 	<definition name="productPage" extends="definition">
-		<put-attribute name="body" value="/resources/view/user/products.jsp" />
+		<put-attribute name="body" value="/resource/view/user/products.jsp" />
 	</definition>
 	<definition name="product_detailPage" extends="definition">
-		<put-attribute name="body" value="/resources/view/user/product_detail.jsp" />
+		<put-attribute name="body" value="/resource/view/user/product_detail.jsp" />
 	</definition>
 	<definition name="loginPage" extends="definition">
-		<put-attribute name="body" value="/resources/view/user/login.jsp" />
+		<put-attribute name="body" value="/resource/view/user/login.jsp" />
 	</definition>
 	<definition name="contactPage" extends="definition">
-		<put-attribute name="body" value="/resources/view/user/contact.jsp" />
+		<put-attribute name="body" value="/resource/view/user/contact.jsp" />
 	</definition>
 </tiles-definitions>

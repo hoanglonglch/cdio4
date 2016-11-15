@@ -1,11 +1,9 @@
 package com.guru.controller;
 
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import com.guru.entities.CategoryEntity;
 import com.guru.service.CategoryEntityManager;
 
-@Transactional
 @Controller
 @RequestMapping(value = "/")
 public class CategoryController {
@@ -23,7 +20,7 @@ public class CategoryController {
 	CategoryEntityManager categoryEntityManager;
 	
 	@RequestMapping(value = "/getAllCategory", method = RequestMethod.GET)
-	public ResponseEntity<List<CategoryEntity>> home(Locale locale, ModelMap modelMap) {
+	public ResponseEntity<List<CategoryEntity>> home(ModelMap modelMap) {
 
 		List<CategoryEntity> list = categoryEntityManager.getAllCategory();
 		if (list.isEmpty()) {

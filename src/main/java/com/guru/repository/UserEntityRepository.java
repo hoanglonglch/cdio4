@@ -7,6 +7,5 @@ import com.guru.entities.UserEntity;
 
 @Repository
 public interface UserEntityRepository extends JpaRepository<UserEntity, String> {
-
-	public UserEntity findByUsername(String username);
+	UserEntity findByUsername(String username);
 }

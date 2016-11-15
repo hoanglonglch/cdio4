@@ -1,5 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <section class="header_text sub">
-	<img class="pageBanner" src="resources/themes/images/pageBanner.png"
+	<img class="pageBanner" src="${contextPath }/resource/themes/images/pageBanner.png"
 		alt="New products">
 	<h4>
 		<span>Contact Us</span>

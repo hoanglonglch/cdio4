@@ -5,5 +5,7 @@ import java.util.List;
 import com.guru.entities.DetailEntity;
 
 public interface DetailEntityManager {
-	public List<DetailEntity> getAllDetail();
+	List<DetailEntity> getAllDetail();
+	void saveDetail(DetailEntity detailEntity);
+	void deleteDetail(DetailEntity detailEntity);
 }

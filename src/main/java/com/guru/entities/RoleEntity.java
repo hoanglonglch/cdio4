@@ -2,7 +2,9 @@ package com.guru.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.List;
+import java.util.UUID;
 
 
 /**
@@ -16,16 +18,19 @@ public class RoleEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private String id;
-
+	private String id = UUID.randomUUID().toString();
+	
 	private String name;
-
-	//bi-directional many-to-one association to UserRole
-	@OneToMany(mappedBy="roleBean")
-	private List<UserRoleEntity> userRoles;
+	
+	@ManyToMany(mappedBy = "roles", fetch=FetchType.LAZY)
+	private List<UserEntity> users;
 
 	public RoleEntity() {
+	}
+	
+	public RoleEntity(String id) {
+		super();
+		this.id = id;
 	}
 
 	public String getId() {
@@ -43,27 +48,4 @@ public class RoleEntity implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public List<UserRoleEntity> getUserRoles() {
-		return this.userRoles;
-	}
-
-	public void setUserRoles(List<UserRoleEntity> userRoles) {
-		this.userRoles = userRoles;
-	}
-
-	public UserRoleEntity addUserRole(UserRoleEntity userRole) {
-		getUserRoles().add(userRole);
-		userRole.setRoleBean(this);
-
-		return userRole;
-	}
-
-	public UserRoleEntity removeUserRole(UserRoleEntity userRole) {
-		getUserRoles().remove(userRole);
-		userRole.setRoleBean(null);
-
-		return userRole;
-	}
-
 }

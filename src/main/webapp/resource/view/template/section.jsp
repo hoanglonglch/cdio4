@@ -1,8 +1,6 @@
-
 <section>
 	<div class="row">
 		<div class="col-md-12 well">
-
 			<table class="table table-striped">
 				<thead>
 					<tr>

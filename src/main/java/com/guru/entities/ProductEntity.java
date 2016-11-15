@@ -2,8 +2,12 @@ package com.guru.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.validator.constraints.NotBlank;
+	
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 
 /**
@@ -17,21 +21,25 @@ public class ProductEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private String id;
+	private String id= UUID.randomUUID().toString();
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
-
+	
+	@NotBlank
 	private String description;
-
+	
+	@NotBlank
 	private String image;
-
+	
+	@NotBlank
 	private String name;
-
-	private String price;
-
-	private String quanlity;
+	
+	@NotBlank
+	private double price;
+	
+	@NotBlank
+	private int quantity;
 
 	//bi-directional many-to-one association to Detail
 	@OneToMany(mappedBy="product")
@@ -88,20 +96,20 @@ public class ProductEntity implements Serializable {
 		this.name = name;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
-	public String getQuanlity() {
-		return this.quanlity;
+	public int getQuantity() {
+		return this.quantity;
 	}
 
-	public void setQuanlity(String quanlity) {
-		this.quanlity = quanlity;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public List<DetailEntity> getDetails() {

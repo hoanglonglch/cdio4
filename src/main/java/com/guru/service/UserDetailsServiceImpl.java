@@ -28,13 +28,10 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity user = userEntityRepository.findByUsername(username);
         List<RoleEntity> roles = roleEntityRepository.findAll();
-       
-
         Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
         for (RoleEntity role : roles){
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
 }

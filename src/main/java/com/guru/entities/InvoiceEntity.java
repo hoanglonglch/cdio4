@@ -2,8 +2,15 @@ package com.guru.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
+import com.guru.validator.Phone;
+
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 
 /**
@@ -17,28 +24,88 @@ public class InvoiceEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private String id;
+	private String id= UUID.randomUUID().toString();
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
-
+	
+	@NotBlank
+	@Email
 	private String email;
 
-	private String message;
-
+	@Phone
 	private String phone;
 	
 	@Column(name = "status")
 	private String status;
 
 	private String username;
+	
+	@NotBlank
+	private String firstName;
+	
+	@NotBlank
+	private String lastName;
+	
+	@NotBlank
+	private String address;
+	
+	@NotBlank
+	private String city;
 
 	//bi-directional many-to-one association to Detail
 	@OneToMany(mappedBy="invoice")
 	private List<DetailEntity> details;
 
 	public InvoiceEntity() {
+	}
+
+	public InvoiceEntity(Date created, String email, String phone, String status, String username,
+			String firstName, String lastName, String address, String city, List<DetailEntity> details) {
+		super();
+		this.created = created;
+		this.email = email;
+		this.phone = phone;
+		this.status = status;
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.city = city;
+		this.details = details;
+	}
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public String getId() {
@@ -63,14 +130,6 @@ public class InvoiceEntity implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getMessage() {
-		return this.message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 
 	public String getPhone() {

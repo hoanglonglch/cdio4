@@ -2,7 +2,11 @@ package com.guru.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.util.List;
+import java.util.UUID;
 
 
 /**
@@ -16,9 +20,9 @@ public class ImageEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private String id;
-
+	private String id = UUID.randomUUID().toString();
+	
+	@NotBlank
 	private String image;
 
 	//bi-directional many-to-one association to ProductImage

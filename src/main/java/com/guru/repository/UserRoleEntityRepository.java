@@ -7,5 +7,4 @@ import com.guru.entities.UserRoleEntity;
 
 @Repository
 public interface UserRoleEntityRepository extends JpaRepository<UserRoleEntity, String>{
-
 }
