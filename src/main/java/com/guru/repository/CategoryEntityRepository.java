@@ -11,4 +11,5 @@ import com.guru.entities.CategoryEntity;
 public interface CategoryEntityRepository extends JpaRepository<CategoryEntity, String> {
 	List<CategoryEntity> findByParentId(String id);
 	CategoryEntity findById(String id);
+	CategoryEntity findByCategory(String category);
 }

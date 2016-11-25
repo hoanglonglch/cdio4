@@ -54,14 +54,14 @@ public class InvoiceEntity implements Serializable {
 	private String city;
 
 	//bi-directional many-to-one association to Detail
-	@OneToMany(mappedBy="invoice")
-	private List<DetailEntity> details;
+	@OneToMany(mappedBy="invoice", fetch=FetchType.EAGER)
+	private List<InvoiceDetailEntity> invoiceDetail;
 
 	public InvoiceEntity() {
 	}
 
 	public InvoiceEntity(Date created, String email, String phone, String status, String username,
-			String firstName, String lastName, String address, String city, List<DetailEntity> details) {
+			String firstName, String lastName, String address, String city, List<InvoiceDetailEntity> invoiceDetail) {
 		super();
 		this.created = created;
 		this.email = email;
@@ -72,7 +72,7 @@ public class InvoiceEntity implements Serializable {
 		this.lastName = lastName;
 		this.address = address;
 		this.city = city;
-		this.details = details;
+		this.invoiceDetail = invoiceDetail;
 	}
 
 
@@ -156,26 +156,11 @@ public class InvoiceEntity implements Serializable {
 		this.username = username;
 	}
 
-	public List<DetailEntity> getDetails() {
-		return this.details;
+	public List<InvoiceDetailEntity> getInvoiceDetail() {
+		return this.invoiceDetail;
 	}
 
-	public void setDetails(List<DetailEntity> details) {
-		this.details = details;
+	public void setInvoiceDetail(List<InvoiceDetailEntity> invoiceDetail) {
+		this.invoiceDetail = invoiceDetail;
 	}
-
-	public DetailEntity addDetail(DetailEntity detail) {
-		getDetails().add(detail);
-		detail.setInvoice(this);
-
-		return detail;
-	}
-
-	public DetailEntity removeDetail(DetailEntity detail) {
-		getDetails().remove(detail);
-		detail.setInvoice(null);
-
-		return detail;
-	}
-
 }

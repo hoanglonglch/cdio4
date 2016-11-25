@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.guru.entities.CartEntity;
-import com.guru.entities.DetailEntity;
+import com.guru.entities.InvoiceDetailEntity;
 import com.guru.entities.InvoiceEntity;
-import com.guru.service.DetailEntityManager;
+import com.guru.service.InvoiceDetailEntityManager;
 import com.guru.service.InvoiceEntityManager;
 import com.guru.service.ParentEntityManager;
 
@@ -37,7 +37,7 @@ public class CheckoutController {
 	@Autowired
 	InvoiceEntityManager invoiceEntityManager;
 	@Autowired
-	DetailEntityManager detailEntityManager;
+	InvoiceDetailEntityManager detailEntityManager;
 	@ModelAttribute("parent")
 	public void parent(ModelMap model){
 		model.addAttribute("parent",parentEntityManager.getAllParent());
@@ -68,15 +68,22 @@ public class CheckoutController {
 			logger.info("=== No error");
 			// insert into database
 		}
-		InvoiceEntity invoiceEntityAdd = new InvoiceEntity(Calendar.getInstance().getTime(),
-				email, phone, "1", username, firstName, lastName, address, city, null);
-		invoiceEntityManager.saveInvoice(invoiceEntityAdd);
-		for(CartEntity cart : carts){
-			DetailEntity detailEntity = new DetailEntity(cart.getProductEntity().getPrice()*cart.getQuantity(),
-					cart.getQuantity(), invoiceEntityAdd, cart.getProductEntity());
-			detailEntityManager.saveDetail(detailEntity);
+		
+		try {
+			InvoiceEntity invoiceEntityAdd = new InvoiceEntity(Calendar.getInstance().getTime(),
+					email, phone, "1", username, firstName, lastName, address, city, null);
+			invoiceEntityManager.saveInvoice(invoiceEntityAdd);
+			for(CartEntity cart : carts){
+				InvoiceDetailEntity detailEntity = new InvoiceDetailEntity(cart.getProductEntity().getPrice()*cart.getQuantity(),
+						cart.getQuantity(), invoiceEntityAdd, cart.getProductEntity());
+				detailEntityManager.saveInvoiceDetail(detailEntity);
+			}
+			session.removeAttribute("cartSession");
+		} catch (NullPointerException e) {
+			// TODO: handle exception
+			return "cartPage";
 		}
-		session.removeAttribute("cartSession");
+		
 		return "homePage";
 	}
 }

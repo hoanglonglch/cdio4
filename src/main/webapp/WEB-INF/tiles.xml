@@ -10,6 +10,30 @@
 		<put-attribute name="topbar" value="/resource/view/template/topbar.jsp" />
 		<put-attribute name="mainmenu" value="/resource/view/template/mainmenu.jsp" />
 	</definition>
+	<definition name="definitionAdmin" template="/resource/view/admin/template/template.jsp">
+		<put-attribute name="header" value="/resource/view/admin/template/header.jsp" />
+		<put-attribute name="sidebar" value="/resource/view/admin/template/sidebar.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/resource/view/admin/template/footer.jsp" />
+	</definition>
+	<definition name="manageUserPage" extends="definitionAdmin">
+		<put-attribute name="body" value="/resource/view/admin/view/manageUser.jsp" />
+	</definition>
+	<definition name="manageProductPage" extends="definitionAdmin">
+		<put-attribute name="body" value="/resource/view/admin/view/manageProduct.jsp" />
+	</definition>
+	<definition name="manageCategoryPage" extends="definitionAdmin">
+		<put-attribute name="body" value="/resource/view/admin/view/manageCategory.jsp" />
+	</definition>
+	<definition name="manageParentPage" extends="definitionAdmin">
+		<put-attribute name="body" value="/resource/view/admin/view/manageParent.jsp" />
+	</definition>
+	<definition name="manageInvoicePage" extends="definitionAdmin">
+		<put-attribute name="body" value="/resource/view/admin/view/manageInvoice.jsp" />
+	</definition>
+	<definition name="manageInvoiceDetailPage" extends="definitionAdmin">
+		<put-attribute name="body" value="/resource/view/admin/view/manageInvoiceDetail.jsp" />
+	</definition>
 	<definition name="homePage" extends="definition">
 		<put-attribute name="header" value="/resource/view/template/header.jsp" />
 		<put-attribute name="body" value="/resource/view/user/home.jsp" />

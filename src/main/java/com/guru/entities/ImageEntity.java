@@ -26,7 +26,7 @@ public class ImageEntity implements Serializable {
 	private String image;
 
 	//bi-directional many-to-one association to ProductImage
-	@OneToMany(mappedBy="image")
+	@OneToMany(mappedBy="image", fetch=FetchType.LAZY)
 	private List<ProductImageEntity> productImages;
 
 	public ImageEntity() {

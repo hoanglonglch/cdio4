@@ -13,6 +13,7 @@ public class RoleEntityManagerImpl implements RoleEntityManager{
 	@Autowired
 	RoleEntityRepository roleEntityRepository;
 	
+	@Override
 	public List<RoleEntity> getAll() {
 		// TODO Auto-generated method stub
 		return roleEntityRepository.findAll();

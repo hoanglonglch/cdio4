@@ -13,11 +13,13 @@ public class CategoryEntityManagerImpl implements CategoryEntityManager {
 	@Autowired
 	private CategoryEntityRepository categoryEntityRepository;
 
+	@Override
 	public List<CategoryEntity> getAllCategory() {
 		// TODO Auto-generated method stub
 		return categoryEntityRepository.findAll();
 	}
-
+	
+	@Override
 	public List<CategoryEntity> findCategoryByParent(String id) {
 		// TODO Auto-generated method stub
 		return categoryEntityRepository.findByParentId(id);
@@ -39,5 +41,11 @@ public class CategoryEntityManagerImpl implements CategoryEntityManager {
 	public void saveCategory(CategoryEntity categoryEntity) {
 		// TODO Auto-generated method stub
 		categoryEntityRepository.save(categoryEntity);
+	}
+
+	@Override
+	public CategoryEntity findByName(String category) {
+		// TODO Auto-generated method stub
+		return categoryEntityRepository.findByCategory(category);
 	}
 }

@@ -11,9 +11,9 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table (name="details")
-@NamedQuery(name="DetailEntity.findAll", query="SELECT d FROM DetailEntity d")
-public class DetailEntity implements Serializable {
+@Table (name="invoicedetail")
+@NamedQuery(name="InvoiceDetailEntity.findAll", query="SELECT d FROM InvoiceDetailEntity d")
+public class InvoiceDetailEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -21,7 +21,7 @@ public class DetailEntity implements Serializable {
 	
 	private double amount;
 
-	private int quanlity;
+	private int quantity;
 
 	//bi-directional many-to-one association to Invoice
 	@ManyToOne
@@ -31,13 +31,13 @@ public class DetailEntity implements Serializable {
 	@ManyToOne
 	private ProductEntity product;
 
-	public DetailEntity() {
+	public InvoiceDetailEntity() {
 	}
 	
-	public DetailEntity(double amount, int quanlity, InvoiceEntity invoice, ProductEntity product) {
+	public InvoiceDetailEntity(double amount, int quantity, InvoiceEntity invoice, ProductEntity product) {
 		super();
 		this.amount = amount;
-		this.quanlity = quanlity;
+		this.quantity = quantity;
 		this.invoice = invoice;
 		this.product = product;
 	}
@@ -58,12 +58,12 @@ public class DetailEntity implements Serializable {
 		this.amount = amount;
 	}
 
-	public int getQuanlity() {
-		return this.quanlity;
+	public int getQuantity() {
+		return this.quantity;
 	}
 
-	public void setQuanlity(int quanlity) {
-		this.quanlity = quanlity;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public InvoiceEntity getInvoice() {

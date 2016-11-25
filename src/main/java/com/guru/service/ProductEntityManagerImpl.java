@@ -16,6 +16,8 @@ public class ProductEntityManagerImpl implements ProductEntityManager{
 	
 	@Autowired
 	ProductEntityRepository productEntityRepository;
+	
+	@Override
 	public ProductEntity findOne(String id) {
 		// TODO Auto-generated method stub
 		return productEntityRepository.findOne(id);

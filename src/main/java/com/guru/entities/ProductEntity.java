@@ -42,15 +42,15 @@ public class ProductEntity implements Serializable {
 	private int quantity;
 
 	//bi-directional many-to-one association to Detail
-	@OneToMany(mappedBy="product")
-	private List<DetailEntity> details;
+	@OneToMany(mappedBy="product", fetch=FetchType.EAGER)
+	private List<InvoiceDetailEntity> details;
 
 	//bi-directional many-to-one association to Category
 	@ManyToOne
 	private CategoryEntity category;
 
 	//bi-directional many-to-one association to ProductImage
-	@OneToMany(mappedBy="product")
+	@OneToMany(mappedBy="product", fetch=FetchType.LAZY)
 	private List<ProductImageEntity> productImages;
 
 	public ProductEntity() {
@@ -112,22 +112,22 @@ public class ProductEntity implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public List<DetailEntity> getDetails() {
+	public List<InvoiceDetailEntity> getDetails() {
 		return this.details;
 	}
 
-	public void setDetails(List<DetailEntity> details) {
+	public void setDetails(List<InvoiceDetailEntity> details) {
 		this.details = details;
 	}
 
-	public DetailEntity addDetail(DetailEntity detail) {
+	public InvoiceDetailEntity addDetail(InvoiceDetailEntity detail) {
 		getDetails().add(detail);
 		detail.setProduct(this);
 
 		return detail;
 	}
 
-	public DetailEntity removeDetail(DetailEntity detail) {
+	public InvoiceDetailEntity removeDetail(InvoiceDetailEntity detail) {
 		getDetails().remove(detail);
 		detail.setProduct(null);
 

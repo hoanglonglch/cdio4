@@ -1,5 +1,7 @@
 package com.guru.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +22,15 @@ public class InvoiceEntityManagerImpl implements InvoiceEntityManager{
 	public void deleteInvoice(InvoiceEntity invoiceEntity) {
 		// TODO Auto-generated method stub
 		invoiceEntityRepository.delete(invoiceEntity);
+	}
+	@Override
+	public List<InvoiceEntity> getAll() {
+		// TODO Auto-generated method stub
+		return invoiceEntityRepository.findAll();
+	}
+	@Override
+	public InvoiceEntity findById(String id) {
+		// TODO Auto-generated method stub
+		return invoiceEntityRepository.findOne(id);
 	}
 }

@@ -54,7 +54,6 @@ public class LoginController {
 		request.setCharacterEncoding("utf-8");
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
-		System.out.println(password);
 		String phone=request.getParameter("phone");
 		String email=request.getParameter("email");
 		String address=request.getParameter("address");
@@ -66,12 +65,16 @@ public class LoginController {
 			logger.info("=== No error");
 			// insert into database
 		}
-		UserEntity userEntityAdd = new UserEntity(username, address, Calendar.getInstance().getTime(),
-				email, password, phone);
-		userEntityManager.saveUserEntity(userEntityAdd);
-		RoleEntity roleEntity = roleEntityManager.getByName("ROLE_USER");
-		UserRoleEntity userRoleEntity = new UserRoleEntity(roleEntity, userEntityAdd);
-		userRoleEntityManager.saveUserRole(userRoleEntity);
+		if(userEntityManager.getByUsername(username) != null ){
+			
+		}else{
+			UserEntity userEntityAdd = new UserEntity(username, address, Calendar.getInstance().getTime(),
+					email, password, phone);
+			userEntityManager.saveUserEntity(userEntityAdd);
+			RoleEntity roleEntity = roleEntityManager.getByName("ROLE_USER");
+			UserRoleEntity userRoleEntity = new UserRoleEntity(roleEntity, userEntityAdd);
+			userRoleEntityManager.saveUserRole(userRoleEntity);
+		}
 		return "loginPage";
 	}
 }

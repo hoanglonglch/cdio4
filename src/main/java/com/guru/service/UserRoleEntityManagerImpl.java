@@ -11,8 +11,10 @@ import com.guru.repository.UserRoleEntityRepository;
 public class UserRoleEntityManagerImpl implements UserRoleEntityManager {
 	@Autowired
 	UserRoleEntityRepository userRoleEntityRepository;
+	
 	@Autowired
 	RoleEntityRepository roleEntityRepository;
+	
 	@Autowired
 	UserEntityRepository userEntityRepository;
 	

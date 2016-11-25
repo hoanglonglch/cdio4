@@ -10,4 +10,5 @@ public interface CategoryEntityManager{
 	CategoryEntity findCategoryById(String id);
 	void deleteCategory(CategoryEntity categoryEntity);
 	void saveCategory(CategoryEntity categoryEntity);
+	CategoryEntity findByName(String category);
 }

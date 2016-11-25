@@ -11,6 +11,7 @@ public class ImageEntityManagerImpl implements ImageEntityManager {
 	
 	@Autowired
 	ImageEntityRepository imageEntityRepository;
+	
 	@Override
 	public ImageEntity getById(String id) {
 		// TODO Auto-generated method stub

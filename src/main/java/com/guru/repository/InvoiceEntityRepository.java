@@ -8,4 +8,6 @@ import com.guru.entities.InvoiceEntity;
 @Repository
 public interface InvoiceEntityRepository extends JpaRepository<InvoiceEntity, String>{
 
+	InvoiceEntity findByUsername(String username);
+
 }

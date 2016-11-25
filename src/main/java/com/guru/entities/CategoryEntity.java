@@ -30,7 +30,7 @@ public class CategoryEntity implements Serializable {
 	private ParentEntity parent;
 
 	//bi-directional many-to-one association to Product
-	@OneToMany(mappedBy="category")
+	@OneToMany(mappedBy="category", fetch=FetchType.LAZY)
 	private List<ProductEntity> products;
 
 	public CategoryEntity() {
