@@ -21,9 +21,6 @@
 <!-- Bootstrap core CSS -->
 <link href="${contextPath}/resource/view/admin/themes/css/bootstrap.min.css" rel="stylesheet">
 <link href="${contextPath}/resource/view/admin/themes/css/bootstrap-reset.css" rel="stylesheet">
-<!--external css-->
-<link href="${contextPath}/resource/view/admin/themes/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link rel="stylesheet" href="${contextPath}/resource/view/admin/themes/assets/data-tables/DT_bootstrap.css" />
 <!-- Custom styles for this template -->
 <link href="${contextPath}/resource/view/admin/themes/css/style.css" rel="stylesheet">
 <link href="${contextPath}/resource/view/admin/themes/css/style-responsive.css" rel="stylesheet" />

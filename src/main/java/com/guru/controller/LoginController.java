@@ -72,8 +72,10 @@ public class LoginController {
 					email, password, phone);
 			userEntityManager.saveUserEntity(userEntityAdd);
 			RoleEntity roleEntity = roleEntityManager.getByName("ROLE_USER");
-			UserRoleEntity userRoleEntity = new UserRoleEntity(roleEntity, userEntityAdd);
-			userRoleEntityManager.saveUserRole(userRoleEntity);
+			UserRoleEntity userRoleEntity = new UserRoleEntity();
+			userRoleEntity.setRoleBean(roleEntity);
+			userRoleEntity.setUser(userEntityAdd);
+			userRoleEntityManager.saveUserRole(roleEntity.getId(),userEntityAdd.getId());
 		}
 		return "loginPage";
 	}

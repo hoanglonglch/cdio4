@@ -28,7 +28,7 @@ public class ParentEntityManagerImpl implements ParentEntityManager{
 	@Override
 	public ParentEntity findByParent(String parent) {
 		// TODO Auto-generated method stub
-		return findByParent(parent);
+		return parentEntityRepository.findByParent(parent);
 	}
 
 	@Override

@@ -42,6 +42,6 @@ public class ManageInvoiceController {
 			invoiceDetailEntityManager.deleteInvoiceDetail(invoiceDetailEntity);
 		}
 		invoiceEntityManager.deleteInvoice(invoiceEntity);
-		return "manageInvoicePage";
+		return "redirect:invoice";
 	}
 }

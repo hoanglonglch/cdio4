@@ -7,5 +7,5 @@ import com.guru.entities.ParentEntity;
 
 @Repository
 public interface ParentEntityRepository extends JpaRepository<ParentEntity, String>{
-
+	ParentEntity findByParent(String parent);
 }

@@ -77,9 +77,9 @@ public class UserEntity implements Serializable {
 	public UserEntity() {
 	}
 	
-	public UserEntity(String username) {
+	public UserEntity(String id) {
 		super();
-		this.username = username;
+		this.id = id;
 	}
 
 	public UserEntity(String username, String address, Date created, String email, String password,

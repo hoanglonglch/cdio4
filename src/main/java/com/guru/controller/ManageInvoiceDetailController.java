@@ -34,6 +34,6 @@ public class ManageInvoiceDetailController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		InvoiceDetailEntity invoiceDetailEntitiy = invoiceDetailEntityManager.findById(id);
 		invoiceDetailEntityManager.deleteInvoiceDetail(invoiceDetailEntitiy);
-		return "manageInvoicePage";
+		return "redirect:invoiceDetail/{invoiceId}";
 	}
 }

@@ -32,9 +32,9 @@ public class CategoryEntityManagerImpl implements CategoryEntityManager {
 	}
 
 	@Override
-	public void deleteCategory(CategoryEntity categoryEntity) {
+	public void deleteCategory(String id) {
 		// TODO Auto-generated method stub
-		categoryEntityRepository.delete(categoryEntity);
+		categoryEntityRepository.delete(id);
 	}
 
 	@Override

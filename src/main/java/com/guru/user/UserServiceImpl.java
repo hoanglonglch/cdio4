@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserDetailsService {
 	
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserEntity user = userEntityManager.getByUsername("toan");
+		UserEntity user = userEntityManager.getByUsername(username);
 		ModelMap model = new ModelMap();
 		model.addAttribute("user",user);
 		List<RoleEntity> roles = roleEntityManager.getAll();
