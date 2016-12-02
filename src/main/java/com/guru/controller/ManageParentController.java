@@ -12,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.guru.entities.ParentEntity;
 import com.guru.service.ParentEntityManager;
@@ -29,20 +30,21 @@ public class ManageParentController {
 		model.addAttribute("parentEntities",parentEntityManager.getAllParent());
 		return "manageParentPage";
 	}
-	@RequestMapping(value = "/parent/delete", method = RequestMethod.GET)
-	public String deleteParent(@PathVariable("id") String id, Locale locale, ModelMap model) {
+	@RequestMapping(value = "/deleteParent", method = RequestMethod.GET)
+	public String deleteParent(@RequestParam("id") String id, Locale locale, ModelMap model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		ParentEntity parentEntity = parentEntityManager.findByParent(id);
+		ParentEntity parentEntity = parentEntityManager.findById(id);
+		System.out.println(parentEntity.getParent());
 		parentEntityManager.deleteParent(parentEntity);
-		return "manageCategoryPage";
+		return "redirect:parent";
 	}
-	@RequestMapping(value = "/parent/create", method = RequestMethod.POST)
+	@RequestMapping(value = "/createParent", method = RequestMethod.POST)
 	public String createParent(HttpServletRequest request, Locale locale, ModelMap model) {
 		String parent = request.getParameter("parent");
 		logger.info("Welcome home! The client locale is {}.", locale);
 		ParentEntity parentEntity = new ParentEntity();
 		parentEntity.setParent(parent);
 		parentEntityManager.saveParent(parentEntity);
-		return "manageCategoryPage";
+		return "redirect:parent";
 	}
 }

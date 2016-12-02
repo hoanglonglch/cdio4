@@ -58,10 +58,10 @@ public class UserEntity implements Serializable {
 	@JoinTable(
 			name = "user_role",
 			joinColumns={
-					@JoinColumn(name = "user_id")
+					@JoinColumn(name = "user_id", insertable = true,updatable = true)
 			}
 			,inverseJoinColumns={
-					@JoinColumn(name = "role_id")
+					@JoinColumn(name = "role_id", insertable = true,updatable = true)
 			}
 			)
 	private List<RoleEntity> roles;
@@ -75,6 +75,7 @@ public class UserEntity implements Serializable {
 	}
 
 	public UserEntity() {
+		setId(UUID.randomUUID().toString());
 	}
 	
 	public UserEntity(String id) {

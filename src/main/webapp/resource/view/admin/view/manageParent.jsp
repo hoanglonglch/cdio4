@@ -30,7 +30,6 @@
 							<tr>
 								<th>Id</th>
 								<th>Parent</th>
-								<th>Edit</th>
 								<th>Delete</th>
 							</tr>
 						</thead>
@@ -39,14 +38,40 @@
 								<tr class="">
 									<td>${parentEntity.id }</td>
 									<td>${parentEntity.parent }</td>
-									<td><a class="edit" href="">Edit</a></td>
-									<td><a class="delete" href="${contextPath }/admin/parent/delete?id=${parentEntity.id }">Delete</a></td>
+									<td><a class="delete" href="${contextPath }/admin/deleteParent?id=${parentEntity.id }">Delete</a></td>
 								</tr>
 
 							</tbody>
 						</c:forEach>
 					</table>
-
+					<div class="span4">
+				<header class="panel-heading"> Add </header>
+				<h2>${message}</h2>
+				<div class="panel-body">
+					<div class=" form">
+						<form action="createParent" method="POST"
+							class="cmxform form-horizontal tasi-form">
+							<fieldset>
+								<div class="form-group ">
+									<label for="ccomment" class="control-label col-lg-2">Name</label>
+									<div class="col-lg-10">
+										<input type="text" name="parent"
+											placeholder="Enter your parent" class=" form-control" />
+										<br>
+									</div>
+								</div>
+								<hr>
+								<div class="form-group">
+									<div class="col-lg-offset-2 col-lg-10">
+										<button class="btn btn-danger" type="submit">Save</button>
+										<button class="btn btn-default" type="button">Cancel</button>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
 				</div>
 			</div>
 		</section>

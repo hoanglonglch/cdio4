@@ -9,5 +9,6 @@ public interface InvoiceDetailEntityManager {
 	List<InvoiceDetailEntity> getAllDetail();
 	void saveInvoiceDetail(InvoiceDetailEntity detailEntity);
 	void deleteInvoiceDetail(InvoiceDetailEntity detailEntity);
+	void deleteInvoiceWhenDeleteInvoice(List<InvoiceDetailEntity> invoiceDetailEntities);
 	InvoiceDetailEntity findById(String id);
 }

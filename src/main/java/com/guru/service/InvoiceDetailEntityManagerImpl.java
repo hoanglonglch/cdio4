@@ -42,5 +42,11 @@ public class InvoiceDetailEntityManagerImpl implements InvoiceDetailEntityManage
 		// TODO Auto-generated method stub
 		return invoiceDetailEntityRepository.findOne(id);
 	}
+
+	@Override
+	public void deleteInvoiceWhenDeleteInvoice(List<InvoiceDetailEntity> invoiceDetailEntities) {
+		// TODO Auto-generated method stub
+		invoiceDetailEntityRepository.deleteInBatch(invoiceDetailEntities);
+	}
 	
 }

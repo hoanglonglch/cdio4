@@ -86,6 +86,7 @@ public class ManageUserController {
 			// insert into database
 		}
 		UserEntity user = userEntityManager.getByUsername(username);
+		System.out.println(user.getId());
 		RoleEntity roleEntity = roleEntityManager.getByName(role);
 		user.setAddress(address);
 		user.setCreated(Calendar.getInstance().getTime());

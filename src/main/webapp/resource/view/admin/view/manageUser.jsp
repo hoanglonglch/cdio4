@@ -81,6 +81,12 @@
 								class="form-stacked">
 								<fieldset>
 									<div class="form-group ">
+										<div class="col-lg-10">
+											<input type="hidden" name="id"
+												value="${userEntity.id }" class=" form-control" />
+										</div>
+									</div>
+									<div class="form-group ">
 										<label for="ccomment" class="control-label col-lg-2">Username</label>
 										<div class="col-lg-10">
 											<form:input type="text" path="username" name="username"

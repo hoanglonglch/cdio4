@@ -1,5 +1,7 @@
 package com.guru.service;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +38,7 @@ public class UserRoleEntityManagerImpl implements UserRoleEntityManager {
 	@Override
 	public void saveUserRole(String role_id, String user_id) {
 		// TODO Auto-generated method stub
-		userRoleEntityRepository.save(new UserRoleEntity(new RoleEntity(role_id),new UserEntity(user_id)));
+		userRoleEntityRepository.save(new UserEntity(user_id),new RoleEntity(role_id),UUID.randomUUID().toString());
 	}
 
 }

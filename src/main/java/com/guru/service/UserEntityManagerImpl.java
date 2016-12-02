@@ -17,6 +17,7 @@ public class UserEntityManagerImpl implements UserEntityManager{
 	@Override
 	public void saveUserEntity(UserEntity user) {
 		// TODO Auto-generated method stub
+		user.setId(user.getId());
 		userEntityRepository.save(user);
 	}
 

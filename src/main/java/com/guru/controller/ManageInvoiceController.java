@@ -1,6 +1,5 @@
 package com.guru.controller;
 
-import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -11,8 +10,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.guru.entities.InvoiceDetailEntity;
 import com.guru.entities.InvoiceEntity;
 import com.guru.service.InvoiceDetailEntityManager;
 import com.guru.service.InvoiceEntityManager;
@@ -37,10 +34,6 @@ public class ManageInvoiceController {
 	public String deleteInvoice(@RequestParam("id") String id, Locale locale, ModelMap model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		InvoiceEntity invoiceEntity = invoiceEntityManager.findById(id);
-		List<InvoiceDetailEntity> invoiceDetailEntities = invoiceEntity.getInvoiceDetail();
-		for (InvoiceDetailEntity invoiceDetailEntity : invoiceDetailEntities) {
-			invoiceDetailEntityManager.deleteInvoiceDetail(invoiceDetailEntity);
-		}
 		invoiceEntityManager.deleteInvoice(invoiceEntity);
 		return "redirect:invoice";
 	}

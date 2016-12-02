@@ -1,10 +1,8 @@
 package com.guru.entities;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 import javax.persistence.*;
-
 
 /**
  * The persistent class for the user_role database table.
@@ -12,47 +10,84 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="user_role")
-@NamedQuery(name="UserRoleEntity.findAll", query="SELECT u FROM UserRoleEntity u")
 public class UserRoleEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
-	private String id = UUID.randomUUID().toString();
-
+	@Column(name = "idUS")
+	private String idUS;
 	//bi-directional many-to-one association to Role
 	@ManyToOne
+	@JoinColumn(name = "role_id", insertable = false, updatable = false)
 	private RoleEntity role;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
+	@JoinColumn(name = "user_id", insertable = false, updatable = false)
 	private UserEntity user;
 
 	public UserRoleEntity() {
 	}
 	
-	public UserRoleEntity(RoleEntity role, UserEntity user) {
+	public UserRoleEntity(RoleEntity role, UserEntity user, String id) {
 		super();
+		this.idUS=id;
 		this.role = role;
 		this.user = user;
 	}
 
 
-	public String getId() {
-		return this.id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((idUS == null) ? 0 : idUS.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserRoleEntity other = (UserRoleEntity) obj;
+		if (idUS == null) {
+			if (other.idUS != null)
+				return false;
+		} else if (!idUS.equals(other.idUS))
+			return false;
+		if (role == null) {
+			if (other.role != null)
+				return false;
+		} else if (!role.equals(other.role))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
+
+	public String getIdUS() {
+		return idUS;
+	}
+
+	public void setIdUS(String idUS) {
+		this.idUS = idUS;
+	}
+
+	public RoleEntity getRole() {
+		return role;
+	}
+
+	public void setRole(RoleEntity role) {
+		this.role = role;
 	}
 
 	public RoleEntity getRoleBean() {
